@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { PostProvider } from './contexts/PostContext';
 import { UserProvider } from './contexts/UserContext';
@@ -47,6 +48,7 @@ function App() {
       <UserProvider>
         <PostProvider>
           <AppContent />
+          <SpeedInsights />
         </PostProvider>
       </UserProvider>
     </AuthProvider>

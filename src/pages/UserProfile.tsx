@@ -22,11 +22,11 @@ const UserProfile = () => {
     if (username) {
       const user = getUserByUsername(username);
       setProfileUser(user || null);
-      
+
       if (user) {
         const posts = getPostsByUser(user.id);
         setUserPosts(posts);
-        
+
         if (user.githubUsername) {
           fetchRepos(user.githubUsername);
         }
@@ -61,11 +61,11 @@ const UserProfile = () => {
 
   if (!profileUser) {
     return (
-      <div className="min-h-screen bg-gray-900 pt-6">
+      <div className="min-h-screen bg-gray-50 pt-6">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gray-800 rounded-lg p-8 text-center shadow-lg">
-            <h2 className="text-2xl font-bold text-white mb-2">User not found</h2>
-            <p className="text-gray-400">The user you're looking for doesn't exist.</p>
+          <div className="bg-white rounded-lg p-8 text-center shadow-lg">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">User not found</h2>
+            <p className="text-gray-600">The user you're looking for doesn't exist.</p>
           </div>
         </div>
       </div>
@@ -73,24 +73,24 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 pt-6">
+    <div className="min-h-screen bg-gray-50 pt-6">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Profile Header */}
-        <div className="bg-gray-800 rounded-lg p-6 shadow-lg mb-6">
+        <div className="bg-white rounded-lg p-6 shadow-lg mb-6">
           <div className="flex items-start justify-between">
             <div className="flex items-start space-x-6">
               <img
                 src={profileUser.avatar}
                 alt={profileUser.name}
-                className="h-24 w-24 rounded-full border-4 border-gray-600"
+                className="h-24 w-24 rounded-full border-4 border-gray-300"
               />
               <div className="flex-1">
-                <h1 className="text-3xl font-bold text-white">{profileUser.name}</h1>
-                <p className="text-gray-400 text-lg">@{profileUser.username}</p>
+                <h1 className="text-3xl font-bold text-gray-900">{profileUser.name}</h1>
+                <p className="text-gray-600 text-lg">@{profileUser.username}</p>
                 {profileUser.bio && (
-                  <p className="text-gray-300 mt-2">{profileUser.bio}</p>
+                  <p className="text-gray-700 mt-2">{profileUser.bio}</p>
                 )}
-                <div className="flex items-center space-x-4 mt-3 text-gray-400">
+                <div className="flex items-center space-x-4 mt-3 text-gray-600">
                   {profileUser.location && (
                     <div className="flex items-center space-x-1">
                       <MapPin className="h-4 w-4" />
@@ -114,14 +114,14 @@ const UserProfile = () => {
                   )}
                 </div>
                 <div className="flex items-center space-x-6 mt-4">
-                  <span className="text-gray-400">
-                    <span className="font-semibold text-white">{profileUser.followers.length}</span> followers
+                  <span className="text-gray-600">
+                    <span className="font-semibold text-gray-900">{profileUser.followers.length}</span> followers
                   </span>
-                  <span className="text-gray-400">
-                    <span className="font-semibold text-white">{profileUser.following.length}</span> following
+                  <span className="text-gray-600">
+                    <span className="font-semibold text-gray-900">{profileUser.following.length}</span> following
                   </span>
-                  <span className="text-gray-400">
-                    <span className="font-semibold text-white">{userPosts.length}</span> posts
+                  <span className="text-gray-600">
+                    <span className="font-semibold text-gray-900">{userPosts.length}</span> posts
                   </span>
                 </div>
               </div>
@@ -129,22 +129,21 @@ const UserProfile = () => {
             {!isCurrentUser && (
               <button
                 onClick={handleFollow}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-md font-medium transition-colors ${
-                  isFollowing
-                    ? 'bg-gray-600 text-white hover:bg-gray-700'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
-                }`}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-md font-medium transition-colors ${isFollowing
+                    ? 'bg-gray-600 text-gray-900 hover:bg-gray-100'
+                    : 'bg-blue-600 text-gray-900 hover:bg-blue-700'
+                  }`}
               >
                 <Users className="h-4 w-4" />
                 <span>{isFollowing ? 'Unfollow' : 'Follow'}</span>
               </button>
             )}
           </div>
-          
+
           {/* Skills */}
           {profileUser.skills.length > 0 && (
             <div className="mt-6">
-              <h3 className="text-lg font-semibold text-white mb-3">Skills</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Skills</h3>
               <div className="flex flex-wrap gap-2">
                 {profileUser.skills.map((skill, index) => (
                   <span
@@ -161,18 +160,18 @@ const UserProfile = () => {
 
         {/* GitHub Repositories */}
         {profileUser.githubUsername && (
-          <div className="bg-gray-800 rounded-lg p-6 shadow-lg mb-6">
-            <h3 className="text-lg font-semibold text-white mb-4">GitHub Repositories</h3>
-            
+          <div className="bg-white rounded-lg p-6 shadow-lg mb-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">GitHub Repositories</h3>
+
             {loading ? (
               <div className="text-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto"></div>
-                <p className="text-gray-400 mt-2">Loading repositories...</p>
+                <p className="text-gray-600 mt-2">Loading repositories...</p>
               </div>
             ) : githubRepos.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {githubRepos.map((repo) => (
-                  <div key={repo.id} className="bg-gray-700 rounded-lg p-4 hover:bg-gray-600 transition-colors">
+                  <div key={repo.id} className="bg-gray-100 rounded-lg p-4 hover:bg-gray-600 transition-colors">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <a
@@ -184,15 +183,15 @@ const UserProfile = () => {
                           {repo.name}
                         </a>
                         {repo.description && (
-                          <p className="text-gray-300 text-sm mt-1">{repo.description}</p>
+                          <p className="text-gray-700 text-sm mt-1">{repo.description}</p>
                         )}
                         <div className="flex items-center space-x-4 mt-2">
-                          <span className="text-xs text-gray-400">{repo.language}</span>
-                          <div className="flex items-center space-x-1 text-gray-400">
+                          <span className="text-xs text-gray-600">{repo.language}</span>
+                          <div className="flex items-center space-x-1 text-gray-600">
                             <Star className="h-3 w-3" />
                             <span className="text-xs">{repo.stars}</span>
                           </div>
-                          <div className="flex items-center space-x-1 text-gray-400">
+                          <div className="flex items-center space-x-1 text-gray-600">
                             <GitFork className="h-3 w-3" />
                             <span className="text-xs">{repo.forks}</span>
                           </div>
@@ -203,22 +202,25 @@ const UserProfile = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-400">No repositories found.</p>
+              <p className="text-gray-600">No repositories found.</p>
             )}
           </div>
         )}
 
         {/* User Posts */}
         <div className="space-y-6">
-          <h3 className="text-lg font-semibold text-white">Posts</h3>
+          <h3 className="text-lg font-semibold text-gray-900">Posts</h3>
           {userPosts.length === 0 ? (
-            <div className="bg-gray-800 rounded-lg p-8 text-center shadow-lg">
-              <MessageSquare className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-400">No posts yet.</p>
+            <div className="bg-white rounded-lg p-8 text-center shadow-lg">
+              <MessageSquare className="h-12 w-12 text-gray-600 mx-auto mb-4" />
+              <p className="text-gray-600">No posts yet.</p>
             </div>
           ) : (
             userPosts.map((post) => (
-              <PostCard key={post.id} post={post} />
+              <PostCard key={post.id} post={post} onPostUpdate={() => {
+                const updated = getPostsByUser(profileUser.id);
+                setUserPosts(updated);
+              }} />
             ))
           )}
         </div>

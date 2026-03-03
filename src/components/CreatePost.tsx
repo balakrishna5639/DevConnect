@@ -81,12 +81,12 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+    <div className="bg-white dark:bg-white rounded-xl p-4 sm:p-6 shadow-lg border border-gray-200 dark:border-gray-300">
       <div className="flex items-start space-x-3 sm:space-x-4">
         <img
           src={user?.avatar}
           alt={user?.name}
-          className="h-10 w-10 sm:h-12 sm:w-12 rounded-full border-2 border-gray-200 dark:border-gray-600 flex-shrink-0"
+          className="h-10 w-10 sm:h-12 sm:w-12 rounded-full border-2 border-gray-200 dark:border-gray-300 flex-shrink-0"
         />
         <div className="flex-1 min-w-0">
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -100,7 +100,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
                   ? "What's this image about?"
                   : "What's on your mind? Share your thoughts, ask questions, or start a discussion..."
               }
-              className="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+              className="w-full p-3 bg-gray-50 dark:bg-gray-100 border border-gray-300 dark:border-gray-300 rounded-lg text-gray-900 dark:text-gray-900 placeholder-gray-400 dark:placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
               rows={postType === 'text' ? 3 : 2}
             />
 
@@ -108,7 +108,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
             {postType === 'image' && (
               <div className="space-y-3">
                 {!image ? (
-                  <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4 sm:p-6 text-center">
+                  <div className="border-2 border-dashed border-gray-300 dark:border-gray-300 rounded-lg p-4 sm:p-6 text-center">
                     <input
                       ref={fileInputRef}
                       type="file"
@@ -116,15 +116,15 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
                       onChange={handleImageUpload}
                       className="hidden"
                     />
-                    <Upload className="h-6 w-6 sm:h-8 sm:w-8 text-gray-400 mx-auto mb-2" />
-                    <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mb-2">
+                    <Upload className="h-6 w-6 sm:h-8 sm:w-8 text-gray-600 mx-auto mb-2" />
+                    <p className="text-sm sm:text-base text-gray-500 dark:text-gray-600 mb-2">
                       {uploading ? 'Uploading...' : 'Click to upload an image'}
                     </p>
                     <button
                       type="button"
                       onClick={() => fileInputRef.current?.click()}
                       disabled={uploading}
-                      className="px-3 py-2 sm:px-4 text-sm sm:text-base bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 transition-colors"
+                      className="px-3 py-2 sm:px-4 text-sm sm:text-base bg-blue-600 text-gray-900 rounded-md hover:bg-blue-700 disabled:opacity-50 transition-colors"
                     >
                       {uploading ? 'Uploading...' : 'Choose Image'}
                     </button>
@@ -139,7 +139,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
                     <button
                       type="button"
                       onClick={removeImage}
-                      className="absolute top-2 right-2 p-1.5 bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors"
+                      className="absolute top-2 right-2 p-1.5 bg-red-600 text-gray-900 rounded-full hover:bg-red-700 transition-colors"
                     >
                       <X className="h-4 w-4" />
                     </button>
@@ -152,13 +152,13 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
             {postType === 'code' && (
               <div className="space-y-3">
                 <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
-                  <label className="text-sm font-medium text-gray-700 dark:text-gray-300 sm:hidden">
+                  <label className="text-sm font-medium text-gray-700 dark:text-gray-700 sm:hidden">
                     Language:
                   </label>
                   <select
                     value={codeSnippet.language}
                     onChange={(e) => setCodeSnippet({ ...codeSnippet, language: e.target.value })}
-                    className="w-full sm:w-auto px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full sm:w-auto px-3 py-2 bg-gray-50 dark:bg-gray-100 border border-gray-300 dark:border-gray-300 rounded-md text-gray-900 dark:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="javascript">JavaScript</option>
                     <option value="typescript">TypeScript</option>
@@ -176,7 +176,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
                   value={codeSnippet.code}
                   onChange={(e) => setCodeSnippet({ ...codeSnippet, code: e.target.value })}
                   placeholder="Paste your code here..."
-                  className="w-full p-3 bg-gray-900 border border-gray-600 rounded-lg text-green-400 font-mono text-xs sm:text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-green-400 font-mono text-xs sm:text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   rows={6}
                 />
               </div>
@@ -191,7 +191,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
                   className={`flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-2 text-sm rounded-md transition-colors ${
                     postType === 'image'
                       ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
-                      : 'text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700'
+                      : 'text-gray-500 dark:text-gray-600 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-100'
                   } disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
                   <Image className="h-4 w-4" />
@@ -204,7 +204,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
                   className={`flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-2 text-sm rounded-md transition-colors ${
                     postType === 'code'
                       ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300'
-                      : 'text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-700'
+                      : 'text-gray-500 dark:text-gray-600 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-100'
                   } disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
                   <Code className="h-4 w-4" />
@@ -214,7 +214,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
               <button
                 type="submit"
                 disabled={loading || (!content.trim() && postType === 'text') || (postType === 'image' && !image) || (postType === 'code' && !codeSnippet.code.trim())}
-                className="flex items-center space-x-2 px-3 sm:px-4 py-2 text-sm sm:text-base bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="flex items-center space-x-2 px-3 sm:px-4 py-2 text-sm sm:text-base bg-blue-600 text-gray-900 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 <Send className="h-4 w-4" />
                 <span>{loading ? 'Posting...' : 'Post'}</span>

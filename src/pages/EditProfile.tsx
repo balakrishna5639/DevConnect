@@ -76,18 +76,18 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 pt-6">
+    <div className="min-h-screen bg-gray-50 pt-6">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
+        <div className="bg-white rounded-lg p-6 shadow-lg">
           <div className="flex items-center space-x-3 mb-6">
             <User className="h-6 w-6 text-blue-500" />
-            <h1 className="text-2xl font-bold text-white">Edit Profile</h1>
+            <h1 className="text-2xl font-bold text-gray-900">Edit Profile</h1>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                 Full Name
               </label>
               <input
@@ -96,7 +96,7 @@ const EditProfile = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="Enter your full name"
                 required
               />
@@ -104,7 +104,7 @@ const EditProfile = () => {
 
             {/* Bio */}
             <div>
-              <label htmlFor="bio" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="bio" className="block text-sm font-medium text-gray-700 mb-2">
                 Bio
               </label>
               <textarea
@@ -113,25 +113,25 @@ const EditProfile = () => {
                 value={formData.bio}
                 onChange={handleChange}
                 rows={4}
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                 placeholder="Tell us about yourself..."
               />
             </div>
 
             {/* Location */}
             <div>
-              <label htmlFor="location" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-2">
                 Location
               </label>
               <div className="relative">
-                <MapPin className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <MapPin className="absolute left-3 top-3 h-4 w-4 text-gray-600" />
                 <input
                   type="text"
                   id="location"
                   name="location"
                   value={formData.location}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full pl-10 pr-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="City, Country"
                 />
               </div>
@@ -139,18 +139,18 @@ const EditProfile = () => {
 
             {/* GitHub Username */}
             <div>
-              <label htmlFor="githubUsername" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="githubUsername" className="block text-sm font-medium text-gray-700 mb-2">
                 GitHub Username
               </label>
               <div className="relative">
-                <Github className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <Github className="absolute left-3 top-3 h-4 w-4 text-gray-600" />
                 <input
                   type="text"
                   id="githubUsername"
                   name="githubUsername"
                   value={formData.githubUsername}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full pl-10 pr-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="your-github-username"
                 />
               </div>
@@ -158,25 +158,25 @@ const EditProfile = () => {
 
             {/* Skills */}
             <div>
-              <label htmlFor="skills" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="skills" className="block text-sm font-medium text-gray-700 mb-2">
                 Skills
               </label>
               <div className="flex space-x-2 mb-3">
                 <div className="relative flex-1">
-                  <Tag className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                  <Tag className="absolute left-3 top-3 h-4 w-4 text-gray-600" />
                   <input
                     type="text"
                     value={skillInput}
                     onChange={(e) => setSkillInput(e.target.value)}
                     onKeyPress={handleSkillKeyPress}
-                    className="w-full pl-10 pr-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full pl-10 pr-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="Add a skill..."
                   />
                 </div>
                 <button
                   type="button"
                   onClick={addSkill}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                  className="px-4 py-2 bg-blue-600 text-gray-900 rounded-md hover:bg-blue-700 transition-colors"
                 >
                   Add
                 </button>
@@ -207,14 +207,14 @@ const EditProfile = () => {
               <button
                 type="button"
                 onClick={() => navigate('/profile')}
-                className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors"
+                className="px-4 py-2 bg-gray-600 text-gray-900 rounded-md hover:bg-gray-100 transition-colors"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={loading}
-                className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-gray-900 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 <Save className="h-4 w-4" />
                 <span>{loading ? 'Saving...' : 'Save Changes'}</span>

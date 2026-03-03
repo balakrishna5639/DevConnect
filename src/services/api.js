@@ -37,32 +37,10 @@ class ApiService {
 
   // Auth endpoints
   async login(credentials) {
-    // Simulate login using localStorage
-    const users = JSON.parse(localStorage.getItem('devconnect_users') || '[]');
-    const user = users.find(u => u.email === credentials.email && u.password === credentials.password);
-    
-    if (user) {
-      const token = 'fake-jwt-token';
-      localStorage.setItem('devconnect_token', token);
-      return {
-        token,
-        user: {
-          id: user.id,
-          username: user.username,
-          email: user.email,
-          name: user.name,
-          bio: user.bio,
-          location: user.location,
-          skills: user.skills,
-          githubUsername: user.githubUsername,
-          avatar: user.avatar,
-          followers: user.followers || [],
-          following: user.following || []
-        }
-      };
-    } else {
-      throw new Error('Invalid credentials');
-    }
+    return this.request('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify(credentials)
+    });
   }
 
   async register(userData) {

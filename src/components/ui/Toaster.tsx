@@ -51,10 +51,10 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) =
               'bg-blue-600'
             }`}
           >
-            <span className="text-white">{toast.message}</span>
+            <span className="text-gray-900">{toast.message}</span>
             <button
               onClick={() => removeToast(toast.id)}
-              className="text-white hover:text-gray-200 ml-4"
+              className="text-gray-900 hover:text-gray-800 ml-4"
             >
               <X className="h-4 w-4" />
             </button>

@@ -161,7 +161,7 @@ class ApiService {
     try {
       const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
       if (!response.ok) return [];
-      
+
       const repos = await response.json();
       return repos.map(repo => ({
         id: repo.id,
